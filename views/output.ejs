@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Giant TV output</title>
+	<style>
+		.fullscreen-bg {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			overflow: hidden;
+			z-index: -100;
+		}
+
+		.fullscreen-bg__video {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: auto;
+			height: auto;
+			min-width: 100%;
+			min-height: 100%;
+			-webkit-transform: translate(-50%, -50%);
+			-moz-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="fullscreen-bg">
+		<video id="bg-video" loop muted autoplay class="fullscreen-bg__video">
+			<source src="/videos/star_loop.mp4" type="video/mp4">
+		</video>
+	</div>
+	<div id="twitch-embed" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;">
+
+
+	</div>
+	<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+	<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js"
+		integrity="sha256-cyEXrJKjO3YNkpCjPxVBdi7pRJ3EF+okm1oN9Qc4rRY=" crossorigin="anonymous"></script>
+	<script>
+		var options = {
+			width: 1920,
+			height: 1080,
+			channel: "",
+			controls: false
+		};
+		var player = new Twitch.Player("twitch-embed", options);
+		player.setVolume(0);
+		player.setQuality('auto')
+		player.pause()
+
+	</script>
+	<script src="/js/output.js"></script>
+</body>
+
+</html>
