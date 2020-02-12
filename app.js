@@ -66,5 +66,5 @@ app.use(function(err, req, res, next) {
   res.render("error");
 });
 
-let port = 3000;
+let port = process.env.PORT || 3000;
 server.listen(port, () => console.log(`App listening on port ${port}!`));
